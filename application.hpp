@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
-
+#include"environment.h"
 #include "arrow.hpp"
 #include "camera.hpp"
 #include "cluster.hpp"
@@ -22,11 +22,11 @@ public:
 	double const UPDATE_INTERVAL = 1.0 / 30.0;
 	char const* WINDOW_TITLE = "COMP371	QUIZ #2";
 	glm::vec3 INITIAL_CLUSTER_POSITIONS[5] = {
-		glm::vec3(-10.5f,1 , 0),
-		glm::vec3(-3.5f, 1 , 0),
-		glm::vec3(3.5f,  1, 0),
-		glm::vec3(10.5f, 1, 0),
-		glm::vec3(0, -3, 0)
+		glm::vec3(-10.5f,4 , 0),
+		glm::vec3(-3.5f, 4 , 0),
+		glm::vec3(3.5f,  4, 0),
+		glm::vec3(10.5f,4, 0),
+		glm::vec3(0, 1, 0)
 	};
 	/*glm::vec3 INITIAL_WALL_POSITIONS[5] = {
 		glm::vec3(0, 0, -7.0f),
@@ -45,6 +45,7 @@ public:
 public:
 	Camera* camera;
 	Grid* grid;
+	Environment* env;
 	ShaderManager *shaderMan;
 	TextureManager* textureMan;
 	Arrow *xAxis, *yAxis, *zAxis;

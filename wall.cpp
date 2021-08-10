@@ -14,7 +14,7 @@ Wall::Wall(Cluster* cluster, glm::vec3 position, glm::vec4 color) : RenderObject
 	// [1][1][0][1][1]
 	// [1][0][0][0][1]
 	// [1][1][0][0][1]
-	// [1][1][1][1][1]
+	// [1][1][1][1][1]git add *
 	// 3. Append a cube to the RenderObject for i/j index where the value is 1. You end up with a wall with holes.
 	// The wall has an offset and a thickness to make it easier to place it exactly where the cluster should be.
 	this->position = position;

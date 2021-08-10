@@ -78,6 +78,7 @@ void Application::initialiseScene() {
 		glm::perspective(glm::radians(90.0f), ASPECT_RATIO, 0.1f, 1000.0f);
 	camera = new Camera(projection, glm::vec2(glm::radians(-10.0f), 0));
 	grid = new Grid(100, 100, 0.5f);
+	env = new Environment(glm::vec4(0.529f, 0.808f, 0.922f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 	lightCube = new Cube(glm::vec4(1, 1, 1, 1), LIGHT_POSITION);
 	xAxis = new Arrow(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 2.5f);
 	yAxis = new Arrow(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), 2.5f);
@@ -293,7 +294,8 @@ void Application::render() {
 		shaderMan->setUniform("specularStrength", "texture", 0.6f);
 		//walls[i]->render();
 	}
-
+	shaderMan->setUniform("object", "basic", glm::translate(glm::mat4(1.0f), env->position));
+	env->render();
 	shaderMan->setUniform("object", "basic", glm::translate(glm::mat4(1.0f), lightCube->position));
 	lightCube->render();
 	shaderMan->setUniform("object", "basic", glm::mat4(1.0f));

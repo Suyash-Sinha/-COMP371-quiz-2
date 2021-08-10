@@ -152,6 +152,7 @@
     <ClCompile Include="arrow.hpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cube.cpp" />
+    <ClCompile Include="environment.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="application.cpp" />
     <ClCompile Include="grid.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="cluster.hpp" />
     <ClInclude Include="cube.hpp" />
+    <ClInclude Include="environment.h" />
     <ClInclude Include="grid.hpp" />
     <ClInclude Include="render_object.hpp" />
     <ClInclude Include="scheduler.hpp" />
