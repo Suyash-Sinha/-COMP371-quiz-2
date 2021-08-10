@@ -22,10 +22,10 @@ public:
 	double const UPDATE_INTERVAL = 1.0 / 30.0;
 	char const* WINDOW_TITLE = "COMP371	QUIZ #2";
 	glm::vec3 INITIAL_CLUSTER_POSITIONS[5] = {
-		glm::vec3(-10.5f,4 , 0),
-		glm::vec3(-3.5f, 4 , 0),
-		glm::vec3(3.5f,  4, 0),
-		glm::vec3(10.5f,4, 0),
+		glm::vec3(-10.5f,5 , 0),
+		glm::vec3(-3.5f, 5 , 0),
+		glm::vec3(3.5f,  5, 0),
+		glm::vec3(10.5f, 5, 0),
 		glm::vec3(0, 1, 0)
 	};
 	/*glm::vec3 INITIAL_WALL_POSITIONS[5] = {
@@ -35,7 +35,7 @@ public:
 		glm::vec3(25.0f, 0, -27.0f),
 		glm::vec3(-25.0f, 0, -27.0f)
 	};*/
-	glm::vec3 LIGHT_POSITION = glm::vec3(0, 15.0f, 0);
+	glm::vec3 LIGHT_POSITION = glm::vec3(0, 24.5, 0);
 	GLfloat SHADOWMAP_FAR_PLANE = 25.0f;
 public:
 	Scheduler scheduler = Scheduler(UPDATE_INTERVAL);

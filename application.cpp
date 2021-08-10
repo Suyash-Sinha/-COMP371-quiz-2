@@ -160,13 +160,22 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key == GLFW_KEY_J && action == GLFW_PRESS) {
 		application->clusters[application->currentCluster].scale -= 0.1f;
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_PRESS) {
-		application->clusters[application->currentCluster].position.z += 1.0f;
+	if (!application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_PRESS) {
+		application->clusters[0].position.z += 1.0f;
+		application->clusters[1].position.z += 1.0f;
+		application->clusters[2].position.z += 1.0f;
+		application->clusters[3].position.z += 1.0f;
+		application->clusters[4].position.z += 1.0f;
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_PRESS) {
+	if (!application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_PRESS) {
 		// Rotation occurs if the CAPS LOCK key is currently active.
 		if (mods & GLFW_MOD_CAPS_LOCK) {
-			application->clusters[application->currentCluster].position.x -= 1.0f;
+
+			application->clusters[0].position.x -= 1.0f;
+			application->clusters[1].position.x -= 1.0f;
+			application->clusters[2].position.x -= 1.0f;
+			application->clusters[3].position.x -= 1.0f;
+			application->clusters[4].position.x -= 1.0f;
 		}
 		else {
 			switch (application->rotationMode) {
@@ -182,13 +191,21 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 			}
 		}
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_PRESS) {
-		application->clusters[application->currentCluster].position.z -= 1.0f;
+	if (!application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_REPEAT|| !application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_PRESS) {
+		application->clusters[0].position.z -= 1.0f;
+		application->clusters[1].position.z -= 1.0f;
+		application->clusters[2].position.z -= 1.0f;
+		application->clusters[3].position.z -= 1.0f;
+		application->clusters[4].position.z -= 1.0f;
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_PRESS) {
+	if (!application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_PRESS) {
 		// Rotation occurs if the CAPS LOCK key is currently active.
 		if (mods & GLFW_MOD_CAPS_LOCK) {
-			application->clusters[application->currentCluster].position.x += 1.0f;
+			application->clusters[0].position.x += 1.0f;
+			application->clusters[1].position.x += 1.0f;
+			application->clusters[2].position.x += 1.0f;
+			application->clusters[3].position.x += 1.0f;
+			application->clusters[4].position.x += 1.0f;
 		}
 		else {
 			switch (application->rotationMode) {
@@ -285,16 +302,18 @@ void Application::render() {
 	shaderMan->setUniform("specularStrength", "texture", 0.15f);
 	grid->render();
 	for (int i = 0; i < 5; i += 1) {
-		shaderMan->setUniform("textureSampler", "texture", 2);
-		shaderMan->setUniform("specularStrength", "texture", 0.6f);
+		//shaderMan->setUniform("textureSampler", "texture", 2);
+		//shaderMan->setUniform("specularStrength", "texture", 0.6f);
 		clusters[i].render(shaderMan, "texture");
 		//glm::mat4 wallTransform = glm::translate(glm::mat4(1.0f), walls[i]->position);
 		//shaderMan->setUniform("object", "texture", wallTransform);
-		shaderMan->setUniform("textureSampler", "texture", 0);
-		shaderMan->setUniform("specularStrength", "texture", 0.6f);
+		//shaderMan->setUniform("textureSampler", "texture", 0);
+		//shaderMan->setUniform("specularStrength", "texture", 0.6f);
 		//walls[i]->render();
 	}
-	shaderMan->setUniform("object", "basic", glm::translate(glm::mat4(1.0f), env->position));
+	shaderMan->setUniform("object", "texture", glm::translate(glm::mat4(1.0f), env->position));
+	shaderMan->setUniform("textureSampler", "texture", 2);
+	shaderMan->setUniform("specularStrength", "texture", 0.6f);
 	env->render();
 	shaderMan->setUniform("object", "basic", glm::translate(glm::mat4(1.0f), lightCube->position));
 	lightCube->render();

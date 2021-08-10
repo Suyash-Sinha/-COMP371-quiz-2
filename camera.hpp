@@ -14,7 +14,7 @@ public:
 	double const MOUSE_SENSITIVITY = 0.05f;
 public:
 	glm::vec3 forward = glm::vec3(0, 0, 0);
-	glm::vec3 position = glm::vec3(0, 1, 5);
+	glm::vec3 position = glm::vec3(0, 12.5f, 25);
 	glm::vec3 right = glm::vec3(0, 0, 0);
 public:
 	bool dirty = true;

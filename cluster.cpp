@@ -73,10 +73,12 @@ void Cluster::render(ShaderManager* shaderMan, std::string const& programName) {
 		glm::rotate(i, rotation.z, glm::vec3(0, 0, 1.0f)) * // Step 3: Rotate cluster around y-axis
 		glm::scale(i, glm::vec3(scale)) * // Step 2: Scale cluster by a constant
 		glm::translate(i, cube->position); // Step 1: Translate cube by offset
-		shaderMan->setUniform("object", programName, transform);
+		//shaderMan->setUniform("object", programName, transform);
+		shaderMan->setUniform("object","basic" , transform);		
 		cube->render();
 	}
 }
+
 void Cluster::setPosition(glm::vec3 position) {
 	this->position = position;
 }

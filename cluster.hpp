@@ -21,5 +21,6 @@ public:
 	void generateCluster();
 	void setObject(int);
 	void render(ShaderManager *shaderMan, std::string const& programName);
+	void render(ShaderManager* shaderMan);
 	void setPosition(glm::vec3 position);
 };
