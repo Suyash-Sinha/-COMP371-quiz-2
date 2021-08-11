@@ -85,7 +85,7 @@ void Cluster::setPosition(glm::vec3 position) {
 void Cluster::setObject(int i) {
 	switch (i)
 	{
-		//creating first letter S
+		//creating first number 5
 	case 0:
 		cubes.push_back(new Cube(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
@@ -105,7 +105,7 @@ void Cluster::setObject(int i) {
 		cubes.push_back(new Cube(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec3(1.0f, 2.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), glm::vec3(2.0f, 2.0f, 0.0f)));
 		break;
-		//creating second letter U
+		//creating second number 0
 	case 1:
 		cubes.push_back(new Cube(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f), glm::vec3(-2.0f, 2.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f), glm::vec3(2.0f, 2.0f, 0.0f)));
@@ -124,7 +124,7 @@ void Cluster::setObject(int i) {
 		cubes.push_back(new Cube(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f), glm::vec3(1.0f, -2.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f), glm::vec3(-1.0f, -2.0f, 0.0f)));
 		break;
-		//creating third letter Y
+		//creating third number 4
 	case 2:
 
 		cubes.push_back(new Cube(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), glm::vec3(2.0f, 2.0f, 0.0f)));
@@ -140,7 +140,7 @@ void Cluster::setObject(int i) {
 		cubes.push_back(new Cube(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), glm::vec3(-1.0f, 0.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), glm::vec3(-2.0f, 0.0f, 0.0f)));
 		break;
-		//creating fourth letter A
+		//creating fourth number 9
 	case 3:
 		cubes.push_back(new Cube(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
@@ -157,7 +157,7 @@ void Cluster::setObject(int i) {
 		cubes.push_back(new Cube(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), glm::vec3(1.0f, 2.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), glm::vec3(2.0f, 2.0f, 0.0f)));
 		break;
-		//creating fifth letter S
+		//creating skateboard with wheel
 	case 4:
 		cubes.push_back(new Cube(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f)));
 		cubes.push_back(new Cube(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f)));

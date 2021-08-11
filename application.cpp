@@ -118,25 +118,25 @@ void Application::initialiseTextures() {
 }
 void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	Application* application = (Application*)glfwGetWindowUserPointer(window);
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {//exit key
 		glfwSetWindowShouldClose(window, true);
 	}
-	if (key == GLFW_KEY_I && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_I && action == GLFW_PRESS) {//toggle axis rotation around x 
 		application->rotationMode = ROTATE_X;
 	}
-	if (key == GLFW_KEY_O && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_O && action == GLFW_PRESS) {//toggle axis rotation around y
 		application->rotationMode = ROTATE_Y;
 	}
-	if (key == GLFW_KEY_P && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_P && action == GLFW_PRESS) {//toggle axis rotation around z
 		application->rotationMode = ROTATE_Z;
 	}
-	if (key == GLFW_KEY_X && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_T && action == GLFW_PRESS) {//turn on and off texture
 		application->enableTextures = !application->enableTextures;
 	}
-	if (key == GLFW_KEY_B && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_Y && action == GLFW_PRESS) {//turn on and off shadowas
 		application->enableShadows = !application->enableShadows;
 	}
-	if (key == GLFW_KEY_C && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_R && action == GLFW_PRESS) {//this toggle is used to change between moving the character along the xy plane or 
 		application->enableSmoothMoves = !application->enableSmoothMoves;
 	}
 	if (key == GLFW_KEY_LEFT && action == GLFW_PRESS) {
@@ -154,13 +154,13 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key == GLFW_KEY_HOME && action == GLFW_PRESS) {
 		application->worldRotation = glm::vec2(0, 0);
 	}
-	if (key == GLFW_KEY_U && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_U && action == GLFW_PRESS) {//scale up a cluster
 		application->clusters[application->currentCluster].scale += 0.1f;
 	}
-	if (key == GLFW_KEY_J && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_J && action == GLFW_PRESS) {//scale down a cluster
 		application->clusters[application->currentCluster].scale -= 0.1f;
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_PRESS) {
+	if (!application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_PRESS) {//if r toggle is off the movement moves all clusters
 		
 		if (application->camera->position == application->clusters[4].position + glm::vec3(0, 8, 0))
 		{
@@ -179,7 +179,7 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 		}
 		
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_PRESS) {
+	if (!application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_PRESS) {//if r toggle is off the movement moves all clusters ot rotate a selected cluster
 		// Rotation occurs if the CAPS LOCK key is currently active.
 		if (mods & GLFW_MOD_CAPS_LOCK) {
 			
@@ -213,7 +213,7 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 			}
 		}
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_REPEAT|| !application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_PRESS) {
+	if (!application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_REPEAT|| !application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_PRESS) {//if r toggle is off the movement moves all clusters
 		
 		
 		if (application->camera->position == application->clusters[4].position + glm::vec3(0, 8, 0))
@@ -232,7 +232,7 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 			application->temp = false;
 		}
 	}
-	if (!application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_PRESS) {
+	if (!application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_PRESS) {//if r toggle is off the movement moves all clusters ot rotate a selected cluster
 		// Rotation occurs if the CAPS LOCK key is currently active.
 		if (mods & GLFW_MOD_CAPS_LOCK) {
 			
@@ -270,29 +270,27 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key >= GLFW_KEY_1 && key <= GLFW_KEY_5 && action == GLFW_PRESS) {
 		application->currentCluster = key - GLFW_KEY_1;
 	}
-	if (key == GLFW_KEY_H && action == GLFW_PRESS) {
-		for (int i = 0; i < 5; i += 1) {
-			application->clusters[i].cubes.clear();
-			application->clusters[i].generateCluster();
-			//application->walls[i] = new Wall(&application->clusters[i], application->INITIAL_WALL_POSITIONS[i]);
-		}
-	}
-
-	if (key == GLFW_KEY_M && action == GLFW_PRESS) {
-		//application->camera->dirty = true;
-		application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
-		application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
-		//application->camera->forward = application->clusters[3].position + glm::vec3(0, 3, 0);
-		//application->camera->view = glm::lookAt(application->camera->position, application->camera->forward, application->camera->WORLD_UP + glm::vec3(0, 8, 0));
-		
-	
-	}
-	if (key == GLFW_KEY_N && action == GLFW_PRESS) {
+	//if (key == GLFW_KEY_H && action == GLFW_PRESS) {
+	//	for (int i = 0; i < 5; i += 1) {
+	//		application->clusters[i].cubes.clear();
+	//		application->clusters[i].generateCluster();
+	//		//application->walls[i] = new Wall(&application->clusters[i], application->INITIAL_WALL_POSITIONS[i]);
+	//	}
+	//}
+	if (key == GLFW_KEY_N && action == GLFW_PRESS) {//changes to first  camera back to initial position that shows the entire room
 		
 		application->camera->position = glm::vec3(0, 12.5f, 25);
 		application->camera->setView(glm::vec3(0, 12.5f, -25));
 	}
-	if (key == GLFW_KEY_L && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_M && action == GLFW_PRESS) {//changes camera to above skateboard
+		application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
+		application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
+		
+		
+	
+	}
+
+	if (key == GLFW_KEY_L && action == GLFW_PRESS) {//changes betwwen the top corner cameras 
 		if (application->topcam == 0)
 		{
 			application->camera->position = glm::vec3(25, 25, -25);
