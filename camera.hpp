@@ -33,4 +33,5 @@ public:
 	void setRotation(glm::vec2 rotation);
 	void rotate(glm::vec2 mouseDelta);
 	void update(double currentTime);
+	void setView(glm::vec3 towrds);
 };

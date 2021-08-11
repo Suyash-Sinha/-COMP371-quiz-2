@@ -42,6 +42,7 @@ public:
 	GLFWwindow* window = nullptr;
 	glm::dvec2 lastMousePos = glm::dvec2(0, 0);
 	int windowSize[2] = { 1024, 768 };
+	int topcam=0;
 public:
 	Camera* camera;
 	Grid* grid;
@@ -59,6 +60,7 @@ public:
 	std::vector<glm::mat4> shadowTransforms;
 	RotationMode rotationMode;
 public:
+	bool temp=false;
 	bool enableTextures = true;
 	bool enableShadows = true;
 	bool enableSmoothMoves = false;

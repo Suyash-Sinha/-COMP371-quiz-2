@@ -76,7 +76,7 @@ void Application::initialiseScene() {
 		((float)windowSize[0]) / windowSize[1];
 	glm::mat4x4 const projection =
 		glm::perspective(glm::radians(90.0f), ASPECT_RATIO, 0.1f, 1000.0f);
-	camera = new Camera(projection, glm::vec2(glm::radians(-10.0f), 0));
+	camera = new Camera(projection, glm::vec2(0, 0));
 	grid = new Grid(100, 100, 0.5f);
 	env = new Environment(glm::vec4(0.529f, 0.808f, 0.922f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 	lightCube = new Cube(glm::vec4(1, 1, 1, 1), LIGHT_POSITION);
@@ -161,21 +161,43 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 		application->clusters[application->currentCluster].scale -= 0.1f;
 	}
 	if (!application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_W && action == GLFW_PRESS) {
-		application->clusters[0].position.z += 1.0f;
-		application->clusters[1].position.z += 1.0f;
-		application->clusters[2].position.z += 1.0f;
-		application->clusters[3].position.z += 1.0f;
-		application->clusters[4].position.z += 1.0f;
+		
+		if (application->camera->position == application->clusters[4].position + glm::vec3(0, 8, 0))
+		{
+			application->temp = true;
+		}
+		application->clusters[0].position.x+= 1.0f;
+		application->clusters[1].position.x+= 1.0f;
+		application->clusters[2].position.x+= 1.0f;
+		application->clusters[3].position.x+= 1.0f;
+		application->clusters[4].position.x+= 1.0f;
+		if (application->temp==true)
+		{
+			application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
+			application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
+			application->temp = false;
+		}
+		
 	}
 	if (!application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_A && action == GLFW_PRESS) {
 		// Rotation occurs if the CAPS LOCK key is currently active.
 		if (mods & GLFW_MOD_CAPS_LOCK) {
-
-			application->clusters[0].position.x -= 1.0f;
-			application->clusters[1].position.x -= 1.0f;
-			application->clusters[2].position.x -= 1.0f;
-			application->clusters[3].position.x -= 1.0f;
-			application->clusters[4].position.x -= 1.0f;
+			
+			if (application->camera->position == application->clusters[4].position + glm::vec3(0, 8, 0))
+			{
+				application->temp = true;
+			}
+			application->clusters[0].position.z-= 1.0f;
+			application->clusters[1].position.z-= 1.0f;
+			application->clusters[2].position.z-= 1.0f;
+			application->clusters[3].position.z-= 1.0f;
+			application->clusters[4].position.z-= 1.0f;
+			if (application->temp == true)
+			{
+				application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
+				application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
+				application->temp = false;
+			}
 		}
 		else {
 			switch (application->rotationMode) {
@@ -192,20 +214,43 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 		}
 	}
 	if (!application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_REPEAT|| !application->enableSmoothMoves && key == GLFW_KEY_S && action == GLFW_PRESS) {
-		application->clusters[0].position.z -= 1.0f;
-		application->clusters[1].position.z -= 1.0f;
-		application->clusters[2].position.z -= 1.0f;
-		application->clusters[3].position.z -= 1.0f;
-		application->clusters[4].position.z -= 1.0f;
+		
+		
+		if (application->camera->position == application->clusters[4].position + glm::vec3(0, 8, 0))
+		{
+			application->temp = true;
+		}
+		application->clusters[0].position.x -= 1.0f;
+		application->clusters[1].position.x -= 1.0f;
+		application->clusters[2].position.x -= 1.0f;
+		application->clusters[3].position.x -= 1.0f;
+		application->clusters[4].position.x -= 1.0f;
+		if (application->temp == true)
+		{
+			application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
+			application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
+			application->temp = false;
+		}
 	}
 	if (!application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_REPEAT || !application->enableSmoothMoves && key == GLFW_KEY_D && action == GLFW_PRESS) {
 		// Rotation occurs if the CAPS LOCK key is currently active.
 		if (mods & GLFW_MOD_CAPS_LOCK) {
-			application->clusters[0].position.x += 1.0f;
-			application->clusters[1].position.x += 1.0f;
-			application->clusters[2].position.x += 1.0f;
-			application->clusters[3].position.x += 1.0f;
-			application->clusters[4].position.x += 1.0f;
+			
+			if (application->camera->position == application->clusters[4].position + glm::vec3(0, 8, 0))
+			{
+				application->temp = true;
+			}
+			application->clusters[1].position.z+= 1.0f;
+			application->clusters[2].position.z+= 1.0f;
+			application->clusters[3].position.z+= 1.0f;
+			application->clusters[0].position.z+= 1.0f;
+			application->clusters[4].position.z+= 1.0f;
+			if (application->temp == true)
+			{
+				application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
+				application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
+				application->temp = false;
+			}
 		}
 		else {
 			switch (application->rotationMode) {
@@ -230,6 +275,47 @@ void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods
 			application->clusters[i].cubes.clear();
 			application->clusters[i].generateCluster();
 			//application->walls[i] = new Wall(&application->clusters[i], application->INITIAL_WALL_POSITIONS[i]);
+		}
+	}
+
+	if (key == GLFW_KEY_M && action == GLFW_PRESS) {
+		//application->camera->dirty = true;
+		application->camera->position = application->clusters[4].position + glm::vec3(0, 8, 0);
+		application->camera->setView(application->clusters[3].position + glm::vec3(0, 3, 0));
+		//application->camera->forward = application->clusters[3].position + glm::vec3(0, 3, 0);
+		//application->camera->view = glm::lookAt(application->camera->position, application->camera->forward, application->camera->WORLD_UP + glm::vec3(0, 8, 0));
+		
+	
+	}
+	if (key == GLFW_KEY_N && action == GLFW_PRESS) {
+		
+		application->camera->position = glm::vec3(0, 12.5f, 25);
+		application->camera->setView(glm::vec3(0, 12.5f, -25));
+	}
+	if (key == GLFW_KEY_L && action == GLFW_PRESS) {
+		if (application->topcam == 0)
+		{
+			application->camera->position = glm::vec3(25, 25, -25);
+			application->camera->setView(glm::vec3(0, 0, 0));
+			application->topcam = 1;
+		}
+		else if (application->topcam == 1)
+		{
+			application->camera->position = glm::vec3(25, 25, 25);
+			application->camera->setView(glm::vec3(0, 0, 0));
+			application->topcam = 2;
+		}
+		else if (application->topcam == 2)
+		{
+			application->camera->position = glm::vec3(-25, 25, 25);
+			application->camera->setView(glm::vec3(0, 0, 0));
+			application->topcam = 3;
+		}
+		else if (application->topcam == 3)
+		{
+			application->camera->position = glm::vec3(-25, 25, -25);
+			application->camera->setView(glm::vec3(0, 0, 0));
+			application->topcam = 0;
 		}
 	}
 }
@@ -302,9 +388,9 @@ void Application::render() {
 	shaderMan->setUniform("specularStrength", "texture", 0.15f);
 	grid->render();
 	for (int i = 0; i < 5; i += 1) {
-		//shaderMan->setUniform("textureSampler", "texture", 2);
-		//shaderMan->setUniform("specularStrength", "texture", 0.6f);
-		clusters[i].render(shaderMan, "texture");
+		shaderMan->setUniform("color", "basic", glm::mat4(1.0f));
+		shaderMan->setUniform("specularStrength", "basic", 0.6f);
+		clusters[i].render(shaderMan, "basic");
 		//glm::mat4 wallTransform = glm::translate(glm::mat4(1.0f), walls[i]->position);
 		//shaderMan->setUniform("object", "texture", wallTransform);
 		//shaderMan->setUniform("textureSampler", "texture", 0);
@@ -356,9 +442,9 @@ void Application::renderShadowMap() {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 void Application::update() {
-	handleMouse();
+	//handleMouse();
 	handleKeyboard();
-	camera->update(scheduler.currentTime);
+	//camera->update(scheduler.currentTime);
 }
 int main(int argc, char const* argv[]) {
 	// The application was encapsulated in a class to have a simple way to

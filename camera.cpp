@@ -62,3 +62,10 @@ void Camera::update(double currentTime) {
 	viewProjection = projection * view;
 	dirty = true;
 }
+void Camera::setView(glm::vec3 towards) {
+
+	view = glm::lookAt(position, towards, WORLD_UP);
+	viewProjection = projection * view;
+	dirty = true;
+
+}
