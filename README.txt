@@ -1,15 +1,19 @@
 quiz 2 Suyash Sinha (40096587)
 
--to move the skateboard use wasd with cap lock
+-to move the skateboard and numbers together use wasd with cap lock
 - first camera use N
 -camera above middle of skateboard use M
 -camera to change between top 4 corner camera use L
 - Use T to toggle on/off texture
 -use Y to togglr the shadow
 num 1-5 are use to slect object
--if cap lock is off use a and d to rotate a selected object , use I,O,p to switch rotation axis
--use c toggle and then wasd to to move a object
+-if cap lock is off use a and d to rotate a selected object , use I,O,P to switch rotation axis
+-use R toggle and then wasd to to move a object
+-ESC key to exit program
+-arrow key to rotatte the world view
 
+to view changes here is the github link to show my changes
+https://github.com/Suyash-Sinha/-COMP371-quiz-2
 
 
 
